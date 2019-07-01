@@ -292,7 +292,7 @@ model = Classifier()
 criterion = nn.NLLLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.003)
 
-epochs = 7
+epochs = 20
 steps = 0
 train_losses, test_losses = [], []
 
@@ -336,12 +336,105 @@ for i in range(epochs):
         print(f'Accuracy: {accuracy/len(testloader)}')
 ```
 
+    Training loss: 0.5969907244258343
+    Test loss: 0.45537126064300537
+    Accuracy: 0.837579607963562
+    Training loss: 0.48040236235618083
+    Test loss: 0.4564197361469269
+    Accuracy: 0.8391719460487366
+    Training loss: 0.4555375060674224
+    Test loss: 0.4054587781429291
+    Accuracy: 0.8566879034042358
+    Training loss: 0.43134639539253483
+    Test loss: 0.4160998463630676
+    Accuracy: 0.849920392036438
+    Training loss: 0.42371229006092687
+    Test loss: 0.39617791771888733
+    Accuracy: 0.8572850227355957
+    Training loss: 0.4141741424227066
+    Test loss: 0.41605144739151
+    Accuracy: 0.8525079488754272
+    Training loss: 0.4026127882254149
+    Test loss: 0.41036131978034973
+    Accuracy: 0.8496218323707581
+    Training loss: 0.40074826791278845
+    Test loss: 0.41455933451652527
+    Accuracy: 0.8544983863830566
+    Training loss: 0.3938264337731704
+    Test loss: 0.40421757102012634
+    Accuracy: 0.856289803981781
+    Training loss: 0.38593607951900855
+    Test loss: 0.3894609212875366
+    Accuracy: 0.8673368096351624
+    Training loss: 0.38743931217107186
+    Test loss: 0.42503443360328674
+    Accuracy: 0.8538017272949219
+    Training loss: 0.3780076681201392
+    Test loss: 0.3754321336746216
+    Accuracy: 0.8673368096351624
+    Training loss: 0.3800705683622152
+    Test loss: 0.40686577558517456
+    Accuracy: 0.8619625568389893
+    Training loss: 0.3766767466182648
+    Test loss: 0.39196550846099854
+    Accuracy: 0.8647491931915283
+    Training loss: 0.37004977861034083
+    Test loss: 0.37305891513824463
+    Accuracy: 0.8654458522796631
+    Training loss: 0.36968942699846685
+    Test loss: 0.39208701252937317
+    Accuracy: 0.8612658977508545
+    Training loss: 0.36807350244825837
+    Test loss: 0.3892441391944885
+    Accuracy: 0.8644506335258484
+    Training loss: 0.36202541258194043
+    Test loss: 0.3834351599216461
+    Accuracy: 0.8691281676292419
+    Training loss: 0.36551991187687366
+    Test loss: 0.37415942549705505
+    Accuracy: 0.8662420511245728
+    Training loss: 0.3577012780791661
+    Test loss: 0.3998105823993683
+    Accuracy: 0.8568869233131409
+
+
 
 ```python
 plt.plot(train_losses, label='Training loss')
 plt.plot(test_losses, label='Validation loss')
 plt.legend(frameon=False)
 ```
+
+
+
+
+    <matplotlib.legend.Legend at 0x1219dfa90>
+
+
+
+
+![png](fashion_mnist_network_files/fashion_mnist_network_16_1.png)
+
+
+#### Saving and loading networks
+It's impractical to create new models every time we want to train or predict.
+To save we'll use the pytorch's `torch.save()`. We can save to a file as follows:
+    
+
+
+```python
+torch.save(model.state_dict(), 'checkpoint.pth')
+```
+
+
+```python
+# load the saved model
+state_dict = torch.load('checkpoint.pth')
+print(state_dict.keys())
+```
+
+    odict_keys(['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias', 'fc4.weight', 'fc4.bias'])
+
 
 
 ```python
