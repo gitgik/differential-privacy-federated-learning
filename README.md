@@ -53,6 +53,6 @@ federated learning is done by bringing the model to the data.
 this allows a data owner to maintain the only copy of their information.
 
 
-This notebook on [Federated Learning](federated_learning/federated_learning.ipynb) explains
+This notebook on [federated learning](federated-learning/federated_learning.ipynb) explains
 more in detail.
 
